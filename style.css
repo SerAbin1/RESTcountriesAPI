@@ -1,0 +1,86 @@
+:root {
+  --bg: #fafafa;
+  --text: #111517;
+  --card-bg: #fff;
+  --input-bg: #fff;
+  --shadow: 0 0 7px rgba(0, 0, 0, 0.1);
+ 
+}
+
+body.dark {
+  --bg: #202c37;
+  --text: #ffffff;
+  --card-bg: #2b3945;
+  --input-bg: #2b3945;
+}
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: var(--bg);
+  color: var(--text);
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 2rem;
+  box-shadow: var(--shadow);
+  background-color: var(--card-bg);
+}
+
+.controls {
+  display: flex;
+  justify-content: space-between;
+  padding: 2rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.search-box,
+.region-filter {
+  padding: 0.8rem 1rem;
+  border: none;
+  border-radius: 5px;
+  box-shadow: var(--shadow);
+  background-color: var(--input-bg);
+  font-size: 1rem;
+  width: 250px;
+}
+
+.countries {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  padding: 2rem;
+  gap: 2rem;
+}
+
+.country-card {
+  background-color: var(--card-bg);
+  box-shadow: var(--shadow);
+  border-radius: 5px;
+  overflow: hidden;
+  transition: transform 0.2s ease;
+}
+
+.country-card:hover {
+  transform: scale(1.03);
+}
+
+.country-card img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+}
+
+.country-info {
+  padding: 1rem;
+}
+
+.dark-mode-toggle {
+  background: none;
+  border: none;
+  font-size: 1rem;
+  cursor: pointer;
+}
