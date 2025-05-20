@@ -5,7 +5,7 @@ const toggle_button  = document.querySelector(".toggle-button");
 search.addEventListener("keydown", async (e) => {
   if (e.key === "Enter") {
 
-    const info = await getCountryInfo(search.value);
+    const info = await getCountryInfo(search.value.trim());
     search.value = "";
 
     if (info.status === "duplicate") {
