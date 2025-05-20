@@ -74,7 +74,7 @@ toggle_button.addEventListener("click", () => {
 function isAlreadyInList(country) {
   const countries = document.querySelectorAll(.country-card);
   for (let i=0;i<countries.length;i++) {
-    const countryName = countried[i].querySelector("h2").textContent;
+    const countryName = countries[i].querySelector("h2").textContent;
     if (countryName.toLowerCase() === country.toLowerCase()) {
       return true;
     }
