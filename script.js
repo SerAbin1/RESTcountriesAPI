@@ -18,7 +18,7 @@ search.addEventListener("keydown", async (e) => {
     search.value = "";
 
     if (info.status === 404) {
-      countryInfo.innerHTML = `<p>Country not found</p>`;
+      alert("Country not found");
       return;
     }
 
@@ -50,7 +50,13 @@ async function getCountryInfo(country) {
     }
     const data = await response.json();
     console.log(data);
-    return { population: data[0].population, region: data[0].region, capital: data[0].capital[0], flag: data[0].flags.png, name: data[0].name.common };
+    return { 
+              population: data[0].population,
+              region: data[0].region,
+              capital: data[0].capital[0],
+              flag: data[0].flags.png,
+              name: data[0].name.common
+        };
 }
 
 toggle_button.addEventListener("click", () => {
