@@ -1,4 +1,4 @@
-const main = document.querySelector(".countries");
+const countries = document.querySelector(".countries");
 const search = document.querySelector(".search");
 const toggle_button  = document.querySelector(".toggle-button");
 
@@ -6,7 +6,7 @@ search.addEventListener("keydown", async (e) => {
   if (e.key === "Enter") {
     const country = document.createElement("div");
     country.className = "country-card";
-    main.appendChild(country);
+    countries.appendChild(country);
 
     const countryInfo = document.createElement("div");
     countryInfo.className = "country-info";
@@ -44,12 +44,18 @@ search.addEventListener("keydown", async (e) => {
 });
 
 async function getCountryInfo(country) {
+
+    duplicate = isAlreadyInList(country);
+    if (duplicate) {
+        alert("Country already in the list");
+        return;
+    }
+
     const response = await fetch(`https://restcountries.com/v3.1/name/${country}?fullText=true&fields=population,region,capital,flags,name`);
     if (!response.ok) {
         return { status: response.status };
     }
     const data = await response.json();
-    console.log(data);
     return { 
               population: data[0].population,
               region: data[0].region,
@@ -64,6 +70,16 @@ toggle_button.addEventListener("click", () => {
 
   toggle_button.textContent = document.body.classList.contains("dark") ? "Light Mode" : "Dark Mode";
 });
+
+function isAlreadyInList(country) {
+  const countries = document.querySelectorAll(.country-card);
+  for (let i=0;i<countries.length;i++) {
+    const countryName = countried[i].querySelector("h2").textContent;
+    if (countryName.toLowerCase() === country.toLowerCase()) {
+      return true;
+    }
+  }
+}
 
 function putComma(num) {
   return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
