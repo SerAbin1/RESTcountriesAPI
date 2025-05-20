@@ -7,7 +7,7 @@ search.addEventListener("keydown", async (e) => {
 
     const info = await getCountryInfo(search.value);
     search.value = "";
-    
+
     if (info.status === "duplicate") {
       alert("Country already in the list");
       return;
@@ -49,11 +49,7 @@ search.addEventListener("keydown", async (e) => {
 });
 
 async function getCountryInfo(country) {
-    duplicate = isAlreadyInList(country);
-    if (duplicate) {
-        alert("Country already in the list");
-        return { status: "duplicate" };
-    }
+    if(isAlreadyInList(country)) return { status: "duplicate" };
 
     const response = await fetch(`https://restcountries.com/v3.1/name/${country}?fullText=true&fields=population,region,capital,flags,name`);
     if (!response.ok) {
